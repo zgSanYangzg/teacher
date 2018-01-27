@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.tyrest.prototype</groupId>
+		<artifactId>tyrest-parent</artifactId>
+		<version>${apis.version}</version>
+	</parent>
+	<artifactId>tyrest-core-restframework</artifactId>
+	<packaging>jar</packaging>
+	<name>tyrest-core-restframework</name>
+	<url>http://www.tyrest.org</url>
+	
+	<dependencies>
+	<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-mysql</artifactId>
+			<version>${apis.version}</version>
+			<exclusions>  
+			 	<exclusion>	
+					 <groupId>org.tyrest.prototype</groupId>		
+					 <artifactId>*</artifactId>  
+			 	</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-foundation</artifactId>
+			<version>${apis.version}</version>
+			<exclusions>  
+			 	<exclusion>	
+					 <groupId>org.tyrest.prototype</groupId>		
+					 <artifactId>*</artifactId>  
+			 	</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-cache</artifactId>
+			<version>${apis.version}</version>
+			<exclusions>  
+			 	<exclusion>	 
+					 <groupId>org.tyrest.prototype</groupId>		
+					 <artifactId>*</artifactId>  
+			 	</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-module-security</artifactId>
+			<version>${apis.version}</version>
+			<exclusions>  
+			 	<exclusion>	 
+					 <groupId>org.tyrest.prototype</groupId>		
+					 <artifactId>*</artifactId>  
+			 	</exclusion>
+			</exclusions>
+		</dependency>
+	
+	
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mangofactory</groupId>
+			<artifactId>swagger-models</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>cc.fozone.validation</groupId>
+			<artifactId>fo-validation</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.freeapis.json</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<classifier>jdk15</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+	</dependencies>
+</project>

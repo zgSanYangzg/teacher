@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fozone-validation>
+	<group name="createAddress">
+		<field name="recieverPhone">
+			<rule name="required" message="收货人电话不能为空"/>
+		</field>
+		<field name="recieverName">
+			<rule name="required" message="收货人姓名不能为空"/>
+		</field>
+		<field name="province">
+			<rule name="required" message="省不能为空"/>
+		</field>
+		<field name="city">
+			<rule name="required" message="市不能为空"/>
+		</field>
+		<field name="region">
+			<rule name="required" message="地区不能为空"/>
+		</field>
+		<field name="addrDetail">
+			<rule name="required" message="详细地址不能为空" />
+		</field>
+	</group>
+
+	<group name="updateAddress">
+		<field name="recieverPhone">
+			<rule name="required" message="收货人电话不能为空"/>
+		</field>
+		<field name="recieverName">
+			<rule name="required" message="收货人姓名不能为空"/>
+		</field>
+		<field name="province">
+			<rule name="required" message="省不能为空"/>
+		</field>
+		<field name="city">
+			<rule name="required" message="市不能为空"/>
+		</field>
+		<field name="region">
+			<rule name="required" message="地区不能为空"/>
+		</field>
+		<field name="addrDetail">
+			<rule name="required" message="详细地址不能为空" />
+		</field>
+	</group>
+
+	<group name="createDictionary">
+		<field name="dictCode">
+			<rule name="required" message="字典编号不能为空" />
+		</field>
+		<field name="dictName">
+			<rule name="required" message="字典名称不能为空" />
+		</field>
+	</group>
+
+	<group name="updateDictionary">
+		<field name="dictCode">
+			<rule name="required" message="字典编号不能为空" />
+		</field>
+		<field name="dictName">
+			<rule name="required" message="字典名称不能为空" />
+		</field>
+	</group>
+
+	<group name="createEmployee">
+		<field name="departmentCode">
+			<rule name="required" message="部门编号不能为空"/>
+		</field>
+		<field name="employeeCode">
+			<rule name="required" message="员工编号不能为空"/>
+		</field>
+	</group>
+
+	<group name="updateEmployee">
+		<field name="departmentCode">
+			<rule name="required" message="部门编号不能为空"/>
+		</field>
+		<field name="employeeCode">
+			<rule name="required" message="员工编号不能为空"/>
+		</field>
+	</group>
+
+	<group name="createCategory">
+		<field name="categoryName">
+			<rule name="required" message="分类名称不能为空"/>
+		</field>
+	</group>
+
+	<group name="updateCategory">
+		<field name="categoryName">
+			<rule name="required" message="分类名称不能为空"/>
+		</field>
+	</group>
+
+	<group name="createChannel">
+		<field name="channelCode">
+			<rule name="required" message="栏目编号不能为空"/>
+		</field>
+		<field name="channelName">
+			<rule name="required" message="栏目名称不能为空"/>
+		</field>
+		<field name="parentCode">
+			<rule name="required" message="父栏目code不能为空"/>
+		</field>
+	</group>
+
+	<group name="updateChannel">
+		<field name="channelCode">
+			<rule name="required" message="栏目编号不能为空"/>
+		</field>
+		<field name="channelName">
+			<rule name="required" message="栏目名称不能为空"/>
+		</field>
+	</group>
+
+	<group name="publicSignUp">
+		<field name="loginId">
+			<rule name="required" message="注册手机号不能为空"/>
+		</field>
+		<field name="password">
+			<rule name="required" message="注册密码不能为空"/>
+		</field>
+		<field name="identifyingCode">
+			<rule name="required" message="短信验证码不能为空"/>
+		</field>
+	</group>
+
+	<group name="createModule">
+		<file name="moduleCode">
+			<rule name="required" message="业务模块编号不能为空"/>
+		</file>
+		<file name="moduleName">
+			<rule name="required" message="业务模块名称不能为空"/>
+		</file>
+		<file name="port">
+			<rule name="required" message="业务模块所属端不能为空"/>
+		</file>
+	</group>
+
+	<group name="createContent">
+		<file name="channelCode">
+			<rule name="required" message="栏目编号不能为空"/>
+		</file>
+		<file name="contentTitle">
+			<rule name="required" message="内容标题不能为空"/>
+		</file>
+		<file name="contentBody">
+			<rule name="required" message="内容不能为空"/>
+		</file>
+	</group>
+
+
+	<group name="createSocialUser">
+		<file name="userIdcard">
+			<rule name="required" message="身份证号"/>
+		</file>
+	</group>
+
+</fozone-validation>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/cache 
+        http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+        http://www.springframework.org/schema/jms 
+        http://www.springframework.org/schema/jms/spring-jms-4.0.xsd"
+        >
+	
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">  
+	    <property name="connectionFactory">  
+	        <bean class="org.apache.activemq.ActiveMQConnectionFactory">  
+	            <property name="brokerURL" value="${mq.brokerurl}" /> 
+	            <property name="closeTimeout" value="60000"/>  
+	            <property name="optimizedAckScheduledAckInterval" value="10000" />  
+	        </bean>  
+	    </property>  
+	</bean>
+	
+ 	<bean id="jmsMessageListener" class="org.tyrest.notification.consumer.JMSMessageListener"/>  
+ 	
+    <!-- JMS Topic消息监听器,用于给web端推送消息,使用topic是为了支持分布式的消息服务，现实场景:很多客户端连接到不同的服务器节点，这些服务器节点
+   	在收到JMS topic发布的消息之后，给连接到各自的客户端推送消息 -->  
+    <jms:listener-container container-type="default"
+	    destination-type="topic" connection-factory="jmsConnectionFactory" acknowledge="auto">
+	    <jms:listener destination="webPush" ref="jmsMessageListener" method="onMessage" />
+	</jms:listener-container>
+	
+	<!-- JMS Queue消息监听器,用于给移动端端推送消息,当消息应用分布式部署时,只要有一个应用节点通知第三方即可，故采用queue模式 -->
+	<jms:listener-container container-type="default"
+	    destination-type="queue" connection-factory="jmsConnectionFactory" acknowledge="auto">
+	    <jms:listener destination="mobilePush" ref="jmsMessageListener" method="onMessage" />
+	</jms:listener-container>
+	
+	<!-- 短信的任务消息队列 -->
+	<jms:listener-container container-type="default"
+	    destination-type="queue" connection-factory="jmsConnectionFactory" acknowledge="auto">
+	    <jms:listener destination="sms" ref="jmsMessageListener" method="onMessage" />
+	</jms:listener-container>
+	
+	<!-- 报表更新任务消息队列 -->
+	<jms:listener-container container-type="default"
+	    destination-type="queue" connection-factory="jmsConnectionFactory" acknowledge="auto">
+	    <jms:listener destination="reportUpdate" ref="jmsMessageListener" method="onMessage" />
+	</jms:listener-container>
+
+
+	<!-- 邮件的任务消息队列 -->
+	<jms:listener-container container-type="default"
+							destination-type="queue" connection-factory="jmsConnectionFactory" acknowledge="auto">
+		<jms:listener destination="email" ref="jmsMessageListener" method="onMessage" />
+	</jms:listener-container>
+
+
+	
+</beans>

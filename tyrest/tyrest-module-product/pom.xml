@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.tyrest.prototype</groupId>
+		<artifactId>tyrest-parent</artifactId>
+		<version>${apis.version}</version>
+	</parent>
+	<artifactId>tyrest-module-product</artifactId>
+	<packaging>jar</packaging>
+	<name>tyrest-module-product</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-foundation</artifactId>
+			<version>${apis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-mysql</artifactId>
+			<version>${apis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-core-cache</artifactId>
+			<version>${apis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tyrest.prototype</groupId>
+			<artifactId>tyrest-module-snapshot</artifactId>
+			<version>${apis.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.tyrest.prototype</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>

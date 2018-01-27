@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		
+		
+	<!-- 对象验证框架基于 Spring 配置读取 -->
+	<bean id="springValidateConfig" class="cc.fozone.validation.config.SpringValidateConfig">
+		<property name="validators">
+			<value>validation/validators.xml</value>
+		</property>
+		<property name="rules">
+			<value>validation/all-rules.xml</value>
+		</property>
+	</bean>
+
+	<!-- 对象验证框架配置验证服务 -->
+	<bean id="basicValidateService" class="cc.fozone.validation.BasicValidateService">
+		<constructor-arg index="0" ref="springValidateConfig" />
+	</bean>
+	<!-- 对象验证框架配置基于Spring的验证器 -->
+	<bean class="cc.fozone.validation.validators.SpringValidator" />
+</beans>

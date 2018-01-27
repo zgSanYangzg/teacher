@@ -1,0 +1,159 @@
+.section1{
+	position: absolute;
+	top: 65px;
+	left: 0;
+	width: 100%;
+	min-height: 185px;
+	background-color: #fff;
+}
+
+.bgdiv{
+	position: relative;
+	z-index: 9;
+	width: 100%;
+	text-align: center;
+}
+.bg1{
+	margin-top: 30px;
+}
+
+.bg1 img{
+	height: 45px;
+}
+.bg2{
+	margin-top: 30px;
+}
+
+.bg2 img{
+	height: 72px;
+	/*width: 90%;*/
+}
+.bg21{
+	position: absolute;
+	top:118px;
+	left: 30%;
+	z-index: 9;
+	width: auto;
+}
+.bg22{
+	position: absolute;
+	top:150px;
+	left: 40%;
+	z-index: 9;
+	width: auto;
+	
+}
+.section2{
+	position: absolute;
+	top:250px;
+	left: 0;
+	background-color: #fff;
+}
+.bg3 img{
+	margin-top: 30px;
+	width: 65%;
+}
+.bg31{
+	position: absolute;
+	top:50px;
+	right: 12%;
+	width: 12%;
+}
+.bg32{
+	position: absolute;
+	top:80px;
+	left: 18%;
+	z-index: 8;
+	width: 12%;
+}
+.bg33{
+	position: absolute;
+	top:210px;
+	right: 5%;
+	width: 15%;
+}
+.bg31 img,.bg32 img,.bg33 img{
+	width: 100%;
+}
+.bg4 img{
+	margin-top: 15px;
+	width: 60%;
+}
+
+.bg41 img,.bg42 img{
+	width: 100%;
+}
+.bg41{
+	position: absolute;
+	top:260px;
+	left: 16%;
+	width: 12%;
+}
+.bg42{
+	position: absolute;
+	top:330px;
+	left: 5%;
+	width: 12%;
+}
+.bg5 img{
+	margin-top: 15px;
+	width: 60%;
+}
+.bg51 img,.bg52 img,.bg53 img,.bg54 img{
+	width: 100%;
+}
+.bg51{
+	position: absolute;
+	top:420px;
+	right: 8%;
+	width: 12%;
+}
+.bg52{
+	position: absolute;
+	top:550px;
+	right: 5%;
+	width: 12%;
+}
+.bg53{
+	position: absolute;
+	top:600px;
+	right: 12%;
+	width: 12%;
+}
+.bg54{
+	position: absolute;
+	top:500px;
+	left: 10%;
+	width: 15%;
+}
+.bg6 img{
+	margin-top: 15px;
+	width: 60%;
+}
+.bg61 img,.bg62 img,.bg63 img,.bg64 img{
+	width: 100%;
+}
+.bg61{
+	position: absolute;
+	top:720px;
+	right: 10%;
+	width: 12%;
+}
+.bg62{
+	position: absolute;
+	top:860px;
+	right: 6%;
+	width: 15%;
+}
+.bg63{
+	position: absolute;
+	top:700px;
+	left: 10%;
+	width: 12%;
+}
+.bg64{
+	position: absolute;
+	top:780px;
+	left: 8%;
+	width: 12%;
+}

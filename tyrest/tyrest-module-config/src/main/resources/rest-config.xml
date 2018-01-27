@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/cache 
+        http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd"
+    default-lazy-init="true">
+    
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 开启controller注解支持 -->
+	<context:component-scan base-package="org.tyrest" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 会自动注册了validator ConversionService -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="false">
+			<ref bean="fastJsonHttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="fastJsonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<mvc:default-servlet-handler />
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.tyrest.core.rest.security.auth.AuthInterceptor"></bean>
+		</mvc:interceptor>
+		<!-- 表单重复提交校验拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.tyrest.core.rest.security.repeatsubmitcheck.FormSubmitInterceptor"></bean>
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="defaultContentType"
+			value="#{T(org.springframework.http.MediaType).APPLICATION_JSON}" />
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+		<property name="features">
+			<list>
+				<value>QuoteFieldNames</value>
+				<value>WriteMapNullValue</value>
+				<value>WriteNullNumberAsZero</value>
+				<value>WriteNullListAsEmpty</value>
+				<value>WriteNullStringAsEmpty</value>
+				<value>WriteNullBooleanAsFalse</value>
+				<value>BrowserCompatible</value>
+				<value>DisableCircularReferenceDetect</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="handlerExceptionResolver" class="org.tyrest.core.rest.errors.resolver.RestExceptionResolver">
+		<property name="order" value="100" />
+		<property name="messageConverters">
+			<list>
+				<ref bean="fastJsonHttpMessageConverter" />
+			</list>
+		</property>
+		<property name="errorResolver">
+			<bean class="org.tyrest.core.rest.errors.resolver.DefaultRestErrorResolver">
+				<property name="localeResolver" ref="localeResolver" />
+				<property name="defaultMoreInfoUrl" value="mailto:support@tyrest.org" />
+				<property name="exceptionMappingDefinitions">
+					<map>
+						<entry
+							key="org.tyrest.core.foundation.exceptions.DataNotFoundException"
+							value="404, _exmsg" />
+						<entry
+							key="org.tyrest.core.foundation.exceptions.BadRequestException"
+							value="400, _exmsg" />
+						<entry
+							key="org.tyrest.core.foundation.exceptions.DataValidateException"
+							value="400, _exmsg" />
+						<entry
+							key="org.tyrest.core.foundation.exceptions.ResourceForbiddenException"
+							value="403, _exmsg" />
+						<entry 
+							key="org.tyrest.core.foundation.exceptions.UserStatusException"
+							value="401, _exmsg" />
+						<entry
+							key="org.tyrest.core.foundation.exceptions.UserIdOrPasswordNotValidException"
+							value="401, _exmsg" />
+						<entry
+							key="org.tyrest.core.foundation.exceptions.UnauthorizedException"
+							value="401, _exmsg" />
+						<entry key="org.tyrest.core.rest.security.requestlimit.RequestLimitException"
+							   value="429, _exmsg" />
+						<entry key="Throwable" value="500,_exmsg" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

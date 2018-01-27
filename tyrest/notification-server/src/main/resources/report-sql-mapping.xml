@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports>
+	<report name="test" data-update-way="increment">
+		<sql> 
+			select o.* from order_info o 
+				left join order_product_relation r on o.order_sn = r.order_sn where o.order_sn = :order_sn
+		</sql> 
+	</report>
+</reports>

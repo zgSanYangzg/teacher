@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.tyrest.prototype</groupId>
+    <artifactId>tyrest-parent</artifactId>
+    <version>${apis.version}</version>
+    <packaging>pom</packaging>
+    <name>tyrest-parent</name>
+    <url>http://www.tyrest.org</url>
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <env>DEV</env>
+        <apis.version>tyrest-0.0.1</apis.version>
+        <zookeeper.version>3.4.5</zookeeper.version>
+        <zkclient.version>0.3</zkclient.version>
+        <junit.version>4.11</junit.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <jstl.version>1.2</jstl.version>
+        <taglibs.standard.version>1.1.2</taglibs.standard.version>
+        <jsp-api.version>2.1</jsp-api.version>
+        <jackson.version>6.1.1</jackson.version>
+        <jackson-mapper-asl.version>1.9.4</jackson-mapper-asl.version>
+        <fastjson.version>1.2.7</fastjson.version>
+        <json-lib.version>2.4</json-lib.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <log4j.version>1.2.17</log4j.version>
+        <spring.version>4.0.2.RELEASE</spring.version>
+        <spring-data-jpa.version>1.8.1.RELEASE</spring-data-jpa.version>
+        <spring-data-commons.version>1.10.0.RELEASE</spring-data-commons.version>
+        <hibernate.version>4.1.7.Final</hibernate.version>
+        <redis.version>2.5.2</redis.version>
+        <spring-data-redis.version>1.4.2.RELEASE</spring-data-redis.version>
+        <springside.version>4.2.2.GA</springside.version>
+        <druid.version>1.0.15</druid.version>
+        <commons-dbcp.version>20030825.184428</commons-dbcp.version>
+        <hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
+        <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+        <jdbc.driver.version>5.1.25</jdbc.driver.version>
+        <redis.version>2.5.2</redis.version>
+        <spring-data-redis.version>1.4.2.RELEASE</spring-data-redis.version>
+        <aspectj.version>1.7.0</aspectj.version>
+        <cglib.version>2.2.2</cglib.version>
+        <asm.version>3.3.1</asm.version>
+        <swagger-models.version>1.0.2</swagger-models.version>
+        <scala-library.version>2.10.0</scala-library.version>
+        <poi.version>3.9</poi.version>
+        <commons-pool.version>1.5.4</commons-pool.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <gson.version>2.3.1</gson.version>
+        <httpclient.version>4.3</httpclient.version>
+        <commons-httpclient.version>3.1</commons-httpclient.version>
+        <jsoup.version>1.7.1</jsoup.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
+        <commons-fileupload.version>1.3</commons-fileupload.version>
+        <fo-validation.version>0.9.3.RELEASE</fo-validation.version>
+        <mongo-java-driver>2.13.0</mongo-java-driver>
+        <spring-data-mongodb.version>1.5.4.RELEASE</spring-data-mongodb.version>
+        <xbean-spring.version>3.16</xbean-spring.version>
+        <activemq-pool.version>5.11.1</activemq-pool.version>
+        <activemq-core.version>5.7.0</activemq-core.version>
+        <activemq-web.version>5.7.0</activemq-web.version>
+        <geronimo-j2ee-management_1.1_spec.version>1.0.1</geronimo-j2ee-management_1.1_spec.version>
+        <commons-net.version>3.1</commons-net.version>
+        <hawtdispatch.version>1.11</hawtdispatch.version>
+        <jasypt.version>1.9.0</jasypt.version>
+        <kafka_2.10.version>0.8.0</kafka_2.10.version>
+        <spring-data-elasticsearch.version>1.3.0.RELEASE</spring-data-elasticsearch.version>
+        <jackson.version>2.6.1</jackson.version>
+        <javax.websocket-api.version>1.0</javax.websocket-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>taglibs</groupId>
+                <artifactId>standard</artifactId>
+                <version>${taglibs.standard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${jsp-api.version}</version>
+            </dependency>
+            <!-- Json start -->
+            <dependency>
+                <groupId>com.cedarsoft.serialization.commons-serializers</groupId>
+                <artifactId>jackson</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson-mapper-asl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.freeapis.json</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>${json-lib.version}</version>
+                <classifier>jdk15</classifier>
+            </dependency>
+            <!-- Json end -->
+
+            <!-- Log start -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!-- Log end -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+
+            <!-- SPRINGSIDE -->
+            <dependency>
+                <groupId>org.springside</groupId>
+                <artifactId>springside-core</artifactId>
+                <version>${springside.version}</version>
+            </dependency>
+
+            <!-- AOP begin -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- AOP end -->
+
+            <!-- Swagger start -->
+            <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger-models.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala-library.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-compiler</artifactId>
+                <version>${scala-library.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scalap</artifactId>
+                <version>${scala-library.version}</version>
+            </dependency>
+            <!-- Swagger end -->
+
+            <!-- poi解析excel -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!-- dbcp connection pool -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons-dbcp.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons-pool.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- jdbc driver -->
+            <dependency>
+                <groupId>${jdbc.driver.groupId}</groupId>
+                <artifactId>${jdbc.driver.artifactId}</artifactId>
+                <version>${jdbc.driver.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- Redis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring-data-redis.version}</version>
+            </dependency>
+            <!-- Redis end -->
+            <!-- memcached start -->
+            <dependency>
+                <groupId>org.tyrest.memcached</groupId>
+                <artifactId>hibernate4-memcached</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.tyrest.memcached</groupId>
+                <artifactId>memcached</artifactId>
+                <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.tyrest.memcached</groupId>
+                <artifactId>spy</artifactId>
+                <version>2.4</version>
+            </dependency>
+            <!-- memcached end -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring-data-jpa.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>junit-dep</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring-data-commons.version}</version>
+            </dependency>
+            <!-- JSR303 BeanValidator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-cache</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons-httpclient.version}</version>
+            </dependency>
+
+            <!-- html解析 -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+            <!-- 汉字转拼 -->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+
+            <!-- 文件上传 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+
+            <!-- 对象验证框架 -->
+            <dependency>
+                <groupId>cc.fozone.validation</groupId>
+                <artifactId>fo-validation</artifactId>
+                <version>${fo-validation.version}</version>
+            </dependency>
+
+            <!-- mongo support -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongo-java-driver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring-data-mongodb.version}</version>
+            </dependency>
+            <!-- mongo support end -->
+
+            <!-- JMS setting begin -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xbean</groupId>
+                <artifactId>xbean-spring</artifactId>
+                <version>${xbean-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-pool</artifactId>
+                <version>${activemq-pool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-core</artifactId>
+                <version>${activemq-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-web</artifactId>
+                <version>${activemq-web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
+                <version>${geronimo-j2ee-management_1.1_spec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.fusesource.hawtdispatch</groupId>
+                <artifactId>hawtdispatch-transport</artifactId>
+                <version>${hawtdispatch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.fusesource.hawtdispatch</groupId>
+                <artifactId>hawtdispatch</artifactId>
+                <version>${hawtdispatch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasypt</groupId>
+                <artifactId>jasypt</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
+            <!-- kafka start -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.10</artifactId>
+                <version>${kafka_2.10.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- kafka end -->
+
+            <!--全文搜索引擎elasticsearch -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring-data-elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- websocket -->
+            <dependency>
+                <groupId>javax.websocket</groupId>
+                <artifactId>javax.websocket-api</artifactId>
+                <version>${javax.websocket-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-websocket</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-messaging</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>tyrest-core-foundation</module>
+        <module>tyrest-core-mysql</module>
+        <module>tyrest-core-cache</module>
+        <module>tyrest-core-restframework</module>
+        <module>tyrest-core-restevent</module>
+        <module>tyrest-core-mongodb</module>
+        <module>tyrest-core-search</module>
+        <module>tyrest-core-logproducer</module>
+        <module>notification-server</module>
+        <module>logger-server</module>
+
+        <module>tyrest-module-config</module>
+        <module>tyrest-module-agency</module>
+        <module>tyrest-module-asi</module>
+        <module>tyrest-module-cms</module>
+        <module>tyrest-module-systemctl</module>
+        <module>tyrest-module-opendata</module>
+        <module>tyrest-module-product</module>
+        <module>tyrest-module-publicuser</module>
+        <module>tyrest-module-security</module>
+        <module>tyrest-module-sysaccount</module>
+        <module>tyrest-module-sysorder</module>
+        <module>tyrest-module-systrade</module>
+        <module>tyrest-module-snapshot</module>
+        <module>tyrest-module-notification</module>
+
+
+        <module>tyrest-api-config</module>
+        <module>tyrest-api-systemctl</module>
+        <module>tyrest-api-security</module>	
+        <module>tyrest-api-asi</module>
+        <module>tyrest-api-account</module>
+        <module>tyrest-api-trade</module>
+        <module>tyrest-api-appuser</module>
+
+        <module>wfj-module-human</module>
+        <module>wfj-api-human</module>
+
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>DEV</id>
+            <properties>
+                <env>DEV</env>
+                <maven.test.skip>false</maven.test.skip>
+            </properties>
+            <!-- 设置默认环境 -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>QA</id>
+            <properties>
+                <env>QA</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>PRODUCT</id>
+            <properties>
+                <env>PRODUCT</env>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
